@@ -10,7 +10,7 @@
 [pallet创建](./Substrate_pallets_create.md)讲述了怎么新建自己的pallet的过程  
 
 ## 合约
-[contract](substrate_contract/flipper)是初始化的合约项目
+[contract](./contract)是智能合约的学习过程
 ````
 cargo-contract new *
 ````
