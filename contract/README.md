@@ -69,7 +69,7 @@ mod incrementer
    1. pub struct Incrementer(一个mod中只能有一个 存储结构)
    2. impl Incrementer（可以有多个函数）
       1. #[ink(constructor)] 用来定义构造函数
-      2. #[ink(message)] 用来定义可执行方法
+      2. #[ink(message)] 公共函数都必须使用该属性
 
 ## 智能合约的编写
 支持的**数据类型**  

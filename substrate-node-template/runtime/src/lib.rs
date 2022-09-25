@@ -186,6 +186,9 @@ impl pallet_contracts::Config for Runtime {
 	type MaxCodeLen = ConstU32<{ 256 * 1024 }>;
 	type RelaxedMaxCodeLen = ConstU32<{ 512 * 1024 }>;
 	type MaxStorageKeyLen = ConstU32<{ 512 * 1024 }>;
+
+	///
+	type ChainExtension = FetchRandomExtension;
 }
 
 impl frame_system::Config for Runtime {
