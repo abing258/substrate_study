@@ -74,6 +74,8 @@ mod erc20 {
                 to: Some(caller),
                 value: initial_supply,
             });
+            //可以直接把日志输出到节点的日志上去
+            //ink_env::debug_println!("erc2.0 contract AccountId：{:?} | balances: {:?}", caller, self.balances)
         }
 
         /// Returns the total token supply.
@@ -94,6 +96,7 @@ mod erc20 {
             let from = self.env().caller();
             self.transfer_from_to(&from, &to, value)
         }
+
 
         /// 以将代币从与合约调用者关联的帐户转移到接收帐户
         fn transfer_from_to(

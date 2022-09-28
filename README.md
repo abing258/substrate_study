@@ -7,12 +7,14 @@
 
 ## Substrate开发模版
 [Substrate Node Template](substrate_contract/flipper)是以官方**polkadot-v0.9.26**分支为基础配置了合约模块的产物  
+1. 添加智能合约获取链上随机数的配置
+
 [pallet创建](./Substrate_pallets_create.md)讲述了怎么新建自己的pallet的过程  
 
 ## 合约
 [contract](./contract)是智能合约的学习过程
 ````
-cargo-contract new *
+cargo-contract new ？
 ````
 
 ## Frame
