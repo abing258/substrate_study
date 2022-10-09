@@ -6,9 +6,6 @@
 
 
 ## Substrate开发模版
-[Substrate Node Template](substrate_contract/flipper)是以官方**polkadot-v0.9.26**分支为基础配置了合约模块的产物  
-1. 添加智能合约获取链上随机数的配置
-
 [pallet创建](./Substrate_pallets_create.md)讲述了怎么新建自己的pallet的过程  
 
 ## 合约
@@ -19,4 +16,7 @@ cargo-contract new ？
 
 ## Frame
 [Frame](./frame/FRAME.md)基础功能模块介绍  
-[Transition Weight&Fees](./frame/weight_fees.md)介绍了交易费用和权重 
+[Transition Weight&Fees](./frame/weight_fees.md)介绍了交易费用和权重  
+
+## off-chain-work
+[off-chain-work](./Substrate_offchainwork.md)介绍了off-chain-work的一些列子  

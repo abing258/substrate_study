@@ -137,3 +137,16 @@ contract ERC20Interface {
 由于是基于polkadot-v0.9.26自己配置的合约模块，一切都是默认的。  
 更改 runtime/src/lib.rs 中的 **deposit()** 函数
 2. ClientImport("Unexpected epoch change") 是因为在未正确停止的情况下中断正在运行的节点（关闭终端或计算机切换到睡眠模式）
+3. 遇到版本问题，可查找合约版本相对应时间点的rust版本进行编译
+````bash
+#以下解决了cargo-contract版本v1.5.0 不能编译3.3.0合约的问题
+
+rustup toolchain install nightly-2022-08-15
+
+rustup target add wasm32-unknown-unknown --toolchain nightly-2022-08-15 
+
+rustup component add rust-src --toolchain nightly-2022-08-15 
+
+cargo +nightly-2022-08-15 contract build 
+
+````
