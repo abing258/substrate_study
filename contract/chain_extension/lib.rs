@@ -16,12 +16,16 @@ pub trait FetchRandom {
     /// and the chain-side chain extension will get the `func_id` to do further operations.
     #[ink(extension = 1101, returns_result = false)]
     fn fetch_random(subject: [u8; 32]) -> [u8; 32];
+
+    #[ink(extension = 8801, returns_result = false)]
+    fn org_reg(org_code: ink_prelude::vec::Vec<u8>, org_name: ink_prelude::vec::Vec<u8>) -> ink_prelude::vec::Vec<u8>;
 }
 
 #[derive(Debug, Copy, Clone, PartialEq, Eq, scale::Encode, scale::Decode)]
 #[cfg_attr(feature = "std", derive(scale_info::TypeInfo))]
 pub enum RandomReadErr {
     FailGetRandomSource,
+    OrgRegFailed
 }
 
 impl ink_env::chain_extension::FromStatusCode for RandomReadErr {
@@ -100,6 +104,14 @@ mod rand_extension {
             Ok(())
         }
 
+        /// 创建组织
+        #[ink(message)]
+        pub fn org_reg(&mut self, org_code: ink_prelude::vec::Vec<u8>, org_name: ink_prelude::vec::Vec<u8>) -> Result<(), RandomReadErr> {
+            let org = self.env().extension().org_reg(org_code, org_name)?;
+            ink_env::debug_println!("从 org_reg 获取的数据是 ：{:?}", org);
+            Ok(())
+        }
+
         /// Simply returns the current value.
         #[ink(message)]
         pub fn get(&self) -> [u8; 32] {
@@ -137,7 +149,7 @@ mod rand_extension {
                 /// SCALE encoded result. The error code is taken from the
                 /// `ink_env::chain_extension::FromStatusCode` implementation for
                 /// `RandomReadErr`.
-                fn call(&mut self, _input: &[u8], output: &mut Vec<u8>) -> u32 {
+                fn call(&mut self, _input: &[u8], output: &mut ink_prelude::vec::Vec<u8>) -> u32 {
                     let ret: [u8; 32] = [1; 32];
                     scale::Encode::encode_to(&ret, output);
                     0
